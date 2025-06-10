@@ -7,15 +7,15 @@ export const signUp=async (req,res)=>{
         let {firstName, lastName, userName, email, password} = req.body;
         let existEmail = await User.findOne({email})
         if(existEmail){
-            res.status(400).json({message:"email already exists !"});
+            return res.status(400).json({message:"email already exists !"});
         }
 
         let existUserName = await User.findOne({userName})
         if(existUserName){
-            res.status(400).json({message:"userName already exists !"});
+            return res.status(400).json({message:"userName already exists !"});
         }
         if(password.length<8){
-            res.status(400).json({message:"password must be at least 8 characters"});
+            return res.status(400).json({message:"password must be at least 8 characters"});
         }
 
         let hashedPassword = await bcrypt.hash(password,10)
@@ -49,7 +49,7 @@ export const login = async(req,res)=>{
         let {email, password} = req.body;
         let user = await User.findOne({email})
         if(!user){
-            res.status(400).json({message:"user does not exist !"});
+            return res.status(400).json({message:"user does not exist !"});
         }
 
         const isMatch = await bcrypt.compare(password, user.password)
