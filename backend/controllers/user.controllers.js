@@ -30,7 +30,6 @@ export const updateProfile = async (req,res)=>{
         if(req.files.coverImage){
             coverImage = await uploadOnCloudinary(req.files.coverImage[0].path)
         }
-
         let user = await User.findByIdAndUpdate(req.userId,{
             firstName,lastName,userName,headline,location,gender,skills,education,experience,profileImage,coverImage
         },{new:true}).select("-password")

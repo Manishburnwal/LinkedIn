@@ -33,7 +33,7 @@ export const signUp=async (req,res)=>{
             httpOnly:true,
             maxAge:7*24*60*60*1000,
             sameSite:"strict",
-            secure: process.env.NODE_ENVIRONMENT === "production"
+            secure: process.env.NODE_ENV === "production"
         })
 
         return res.status(201).json(user)
@@ -62,7 +62,7 @@ export const login = async(req,res)=>{
             httpOnly:true,
             maxAge:7*24*60*60*1000,
             sameSite:"strict",
-            secure: process.env.NODE_ENVIRONMENT === "production"
+            secure: process.env.NODE_ENV === "production"
         })
 
         return res.status(200).json(user)
