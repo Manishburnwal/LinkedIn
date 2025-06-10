@@ -11,7 +11,7 @@ import { userDataContext } from '../context/UserContext';
 import {io} from "socket.io-client"
 import ConnectionButton from './ConnectionButton';
 
-let socket = io("http://localhost:8000")
+let socket = io("https://linkedin-backend-g3id.onrender.com")
 
 function Post({id,author,like,comment,description,image, createdAt}) {
 
